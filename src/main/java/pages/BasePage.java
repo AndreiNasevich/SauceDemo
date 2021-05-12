@@ -8,5 +8,4 @@ abstract class BasePage {
     BasePage(WebDriver driver) {
         this.driver = driver;
     }
-
 }
