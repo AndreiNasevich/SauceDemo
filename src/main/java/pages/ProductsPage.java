@@ -1,0 +1,21 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class ProductsPage extends HeaderPage {
+
+    public ProductsPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public static final String ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON = "//*[text()='%s']/ancestor::*[@class='inventory_item']//button";
+
+    public void addProductToCart(String productName) {
+        driver.findElement(By.xpath(String.format(ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON, productName))).click();
+    }
+
+    public String getAddAndRemoveProductToCartButtonText(String productName) {
+       return driver.findElement(By.xpath(String.format(ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON, productName))).getText();
+    }
+}
