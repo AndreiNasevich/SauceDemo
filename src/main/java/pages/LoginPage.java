@@ -1,7 +1,8 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
@@ -9,24 +10,50 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public static final By USERNAME_INPUT = By.xpath("//*[@data-test='username']");
-    public static final By PASSWORD_INPUT = By.xpath("//*[@data-test='password']");
-    public static final By LOGIN_BUTTON = By.xpath("//*[@id='login-button']");
-    public static final String ERROR_MESSAGE = "//*[@data-test='error']";
+    @FindBy(xpath = "//*[@data-test='username']")
+    WebElement usernameInput;
 
-    public void login(String username, String password) {
-        driver.findElement(USERNAME_INPUT).sendKeys(username);
-        driver.findElement(PASSWORD_INPUT).sendKeys(password);
-        driver.findElement(LOGIN_BUTTON).click();
+    @FindBy(xpath = "//*[@data-test='password']")
+    WebElement passwordInput;
+
+    @FindBy(xpath = "//*[@id='login-button']")
+    WebElement loginButton;
+
+    @FindBy(xpath = "//*[@data-test='error']")
+    WebElement errorMessage;
+
+    /**
+     * Open page login page.
+     *
+     * @return the login page
+     */
+    public LoginPage openPage() {
+        super.openPage(SAUCE_DEMO_BASE_URL);
+        return this;
     }
 
-    public void openPage() {
-        driver.get("https://www.saucedemo.com/");
+    /**
+     * Login and go to products page.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the products page
+     */
+    public ProductsPage login(String username, String password) {
+        waitForElementLocated(usernameInput, 10);
+        usernameInput.sendKeys(username);
+        passwordInput.sendKeys(password);
+        loginButton.click();
+        return new ProductsPage(driver);
     }
 
+    /**
+     * Gets error message.
+     *
+     * @return the error message
+     */
     public String getErrorMessage() {
-        return driver.findElement(By.xpath(ERROR_MESSAGE)).getText();
+        waitForElementLocated(errorMessage, 10);
+        return errorMessage.getText();
     }
 }
-
-
