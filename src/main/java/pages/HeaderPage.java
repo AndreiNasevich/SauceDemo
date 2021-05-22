@@ -1,11 +1,10 @@
 package pages;
 
-import constans.IProductsConstants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HeaderPage extends BasePage implements IProductsConstants {
+public class HeaderPage extends BasePage {
 
     public HeaderPage(WebDriver driver) {
         super(driver);
@@ -28,11 +27,11 @@ public class HeaderPage extends BasePage implements IProductsConstants {
     }
 
     /**
-     * Gets amount of products in cart on cart button sign.
+     * Gets amount of products in cart text.
      *
-     * @return the amount of products in cart on cart button sign
+     * @return the amount of products in cart text
      */
-    public String getAmountOfProductsInCartOnCartButtonSign() {
+    public String getAmountOfProductsInCartText() {
         return amountOfProductsInCartOnCartSign.getText();
     }
 }

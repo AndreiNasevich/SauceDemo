@@ -9,6 +9,10 @@ public class ProductsPage extends HeaderPage {
         super(driver);
     }
 
+    public static final String ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON = "//*[text()='%s']/ancestor::*[@class='inventory_item']//button";
+    public static final String PRODUCT_ITEM = "//*[text()='%s']/ancestor::*[@class='cart_item']";
+    public static final String PRODUCT_PRICE = PRODUCT_ITEM + "//*[@class='inventory_item_price']";
+
     /**
      * Open page products page.
      *
@@ -26,8 +30,9 @@ public class ProductsPage extends HeaderPage {
      * @return the products page
      */
     public ProductsPage addProductToCart(String productName) {
-        waitForElementLocated(By.xpath(String.format(ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON, productName)), 10);
-        driver.findElement(By.xpath(String.format(ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON, productName))).click();
+        String addAndRemoveProductToCartButtonElement = String.format(ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON, productName);
+        waitForElementLocated(By.xpath(addAndRemoveProductToCartButtonElement), 10);
+        driver.findElement(By.xpath(addAndRemoveProductToCartButtonElement)).click();
         return this;
     }
 
@@ -48,7 +53,8 @@ public class ProductsPage extends HeaderPage {
      * @return the product price
      */
     public String getProductPrice(String productName) {
-        waitForElementLocated(By.xpath(String.format(PRODUCT_PRICE, productName)), 10);
-        return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
+        String productPriceElement = String.format(PRODUCT_PRICE, productName);
+        waitForElementLocated(By.xpath(productPriceElement), 10);
+        return driver.findElement(By.xpath(productPriceElement)).getText();
     }
 }

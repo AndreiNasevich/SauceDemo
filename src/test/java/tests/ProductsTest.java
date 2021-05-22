@@ -42,6 +42,6 @@ public class ProductsTest extends BaseTest implements ITestConstants {
                 .login(STANDARD_USER_LOGIN, STANDARD_PASSWORD)
                 .addProductToCart(SAUCE_LABS_BACKPACK_PRODUCT)
                 .addProductToCart(SAUCE_LABS_BOLT_T_SHIRT);
-        Assert.assertEquals(productsPage.getAmountOfProductsInCartOnCartButtonSign(), "2");
+        Assert.assertEquals(productsPage.getAmountOfProductsInCartText(), "2");
     }
 }

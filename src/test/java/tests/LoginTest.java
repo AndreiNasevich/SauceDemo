@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
     public void loginWithEmptyNameFieldTest() {
         loginPage
                 .openPage()
-                .login(EMPTY_LOGIN, STANDARD_PASSWORD);
+                .login(EMPTY_STRING, STANDARD_PASSWORD);
         Assert.assertEquals(loginPage.getErrorMessage(), EMPTY_USERNAME_ERROR_MESSAGE);
     }
 
@@ -29,7 +29,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
     public void loginWithEmptyPasswordFieldTest() {
         loginPage
                 .openPage()
-                .login(STANDARD_USER_LOGIN, EMPTY_PASSWORD);
+                .login(STANDARD_USER_LOGIN, EMPTY_STRING);
         Assert.assertEquals(loginPage.getErrorMessage(), EMPTY_PASSWORD_ERROR_MESSAGE);
     }
 
@@ -41,7 +41,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
     public void loginWithEmptyLoginAndPasswordFieldsTest() {
         loginPage
                 .openPage()
-                .login(EMPTY_LOGIN, EMPTY_PASSWORD);
+                .login(EMPTY_STRING, EMPTY_STRING);
         Assert.assertEquals(loginPage.getErrorMessage(), EMPTY_USERNAME_ERROR_MESSAGE);
     }
 }
