@@ -185,3 +185,75 @@ Module: Overview page
 Priority: Low
 Summary: Check the button “Cancel” on the overview page.
 
+
+mvn versions:display-dependency-updates:
+
+[INFO] The following dependencies in Dependencies have newer versions:
+[INFO]   io.github.bonigarcia:webdrivermanager ................. 4.4.1 -> 4.4.3
+[INFO]   org.seleniumhq.selenium:selenium-java ....... 3.141.59 -> 4.0.0-beta-3
+[INFO]   org.testng:testng ..................................... 7.1.0 -> 7.4.0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.736 s
+[INFO] Finished at: 2021-05-26T15:58:01+03:00
+[INFO] ------------------------------------------------------------------------
+
+mvn versions:use-latest-versions:
+
+[INFO] Major version changes allowed
+[INFO] Updated org.seleniumhq.selenium:selenium-java:jar:3.141.59 to version 4.0.0-beta-3
+[INFO] Updated org.testng:testng:jar:7.1.0 to version 7.4.0
+[INFO] Updated io.github.bonigarcia:webdrivermanager:jar:4.4.1 to version 4.4.3
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.381 s
+[INFO] Finished at: 2021-05-26T16:12:26+03:00
+[INFO] ------------------------------------------------------------------------
+
+mvn clean test:
+
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 53.793 sec
+
+Results :
+
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:01 min
+[INFO] Finished at: 2021-05-26T16:36:25+03:00
+[INFO] ------------------------------------------------------------------------
+
+mvn -Dtest=LoginTest#loginWithEmptyNameFieldTest+loginWithEmptyPasswordFieldTest test:
+
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.316 s - in tests.LoginTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24.004 s
+[INFO] Finished at: 2021-05-26T17:01:14+03:00
+[INFO] ------------------------------------------------------------------------
+
+mvn -Dtest=CartTest#checkProductsPriceInCartTest -DuserName=standard_user -Dpassword=secret_sauce test
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.347 s - in tests.CartTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.735 s
+[INFO] Finished at: 2021-05-26T17:19:07+03:00
+[INFO] ------------------------------------------------------------------------

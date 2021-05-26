@@ -10,11 +10,11 @@ public class CartTest extends BaseTest implements ITestConstants {
      * Check products price in cart test.
      * This method checks that the price of the product in the cart and on the products page matches
      */
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void checkProductsPriceInCartTest() {
         loginPage
                 .openPage()
-                .login(STANDARD_USER_LOGIN, STANDARD_PASSWORD)
+                .login(System.getProperty("userName"), System.getProperty("password"))
                 .addProductToCart(SAUCE_LABS_BACKPACK_PRODUCT);
         cartPage.openPage();
         Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK_PRODUCT), productsPage.getProductPrice(SAUCE_LABS_BACKPACK_PRODUCT));
