@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,7 @@ public class ProductsPage extends HeaderPage {
      *
      * @return the products page
      */
+    @Step("Open Products page")
     public ProductsPage openPage() {
         super.openPage(SAUCE_DEMO_PRODUCTS_PAGE_URL);
         return this;
@@ -29,6 +31,7 @@ public class ProductsPage extends HeaderPage {
      * @param productName the product name
      * @return the products page
      */
+    @Step("Add product {productName} to cart")
     public ProductsPage addProductToCart(String productName) {
         String addAndRemoveProductToCartButtonElement = String.format(ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON, productName);
         waitForElementLocated(By.xpath(addAndRemoveProductToCartButtonElement), 10);

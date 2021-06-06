@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -19,6 +20,7 @@ public class CartPage extends HeaderPage {
      *
      * @return the cart page
      */
+    @Step("Open Cart page")
     public CartPage openPage() {
         super.openPage(SAUCE_DEMO_CART_PAGE_URL);
         return this;
@@ -55,6 +57,7 @@ public class CartPage extends HeaderPage {
      * @return the boolean
      */
     public boolean isRemoveButtonDisplayed(String productName) {
+
         return driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).isDisplayed();
     }
 }

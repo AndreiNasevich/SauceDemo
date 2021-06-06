@@ -12,11 +12,8 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void removeButtonIsDisplayedTest() {
-        loginPage
-                .openPage()
-                .login(STANDARD_USER_LOGIN, STANDARD_PASSWORD)
-                .addProductToCart(SAUCE_LABS_BACKPACK_PRODUCT);
-        Assert.assertEquals(productsPage.getAddAndRemoveProductToCartButtonText(SAUCE_LABS_BACKPACK_PRODUCT), "REMOVE");
+        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        Assert.assertEquals(productSteps.getButtonText(SAUCE_LABS_BACKPACK_PRODUCT), EXPECTED_REMOVE_BUTTON_NAME);
     }
 
     /**
@@ -25,10 +22,8 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void cartButtonIsDisplayedTest() {
-        loginPage
-                .openPage()
-                .login(STANDARD_USER_LOGIN, STANDARD_PASSWORD);
-        Assert.assertTrue(productsPage.isCartButtonDisplayed());
+        loginSteps.login(STANDARD_USER_LOGIN, STANDARD_PASSWORD);
+        Assert.assertTrue(productSteps.isCartButtonDisplayed());
     }
 
     /**
@@ -37,11 +32,7 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void amountOfProductsInCartIsDisplayedOnCartSignTest() {
-        loginPage
-                .openPage()
-                .login(STANDARD_USER_LOGIN, STANDARD_PASSWORD)
-                .addProductToCart(SAUCE_LABS_BACKPACK_PRODUCT)
-                .addProductToCart(SAUCE_LABS_BOLT_T_SHIRT);
-        Assert.assertEquals(productsPage.getAmountOfProductsInCartText(), "2");
+        productSteps.loginAndAddTwoProductsToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD,SAUCE_LABS_BACKPACK_PRODUCT, SAUCE_LABS_BOLT_T_SHIRT);
+        Assert.assertEquals(productSteps.getAmountOfProductsInCart(), "2");
     }
 }
