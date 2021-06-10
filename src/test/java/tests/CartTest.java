@@ -12,7 +12,7 @@ public class CartTest extends BaseTest implements ITestConstants {
      */
     @Test(retryAnalyzer = Retry.class)
     public void checkProductsPriceInCartTest() {
-        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        productSteps.loginAndAddProductToCart(System.getenv("username"), System.getenv("password"), SAUCE_LABS_BACKPACK_PRODUCT);
         cartSteps.openCartPage();
         Assert.assertEquals(cartSteps.getPrice(SAUCE_LABS_BACKPACK_PRODUCT), productSteps.getPrice(SAUCE_LABS_BACKPACK_PRODUCT));
     }
