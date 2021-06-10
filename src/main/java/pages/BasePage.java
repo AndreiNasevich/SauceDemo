@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 abstract class BasePage implements IUrlConstants {
     WebDriver driver;
     WebDriverWait wait;
@@ -33,7 +35,7 @@ abstract class BasePage implements IUrlConstants {
      * @param timeout the timeout
      */
     public void waitForElementLocated(By element, int timeout) {
-        wait = new WebDriverWait(driver, timeout);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
@@ -44,7 +46,7 @@ abstract class BasePage implements IUrlConstants {
      * @param timeout the timeout
      */
     public void waitForElementLocated(WebElement element, int timeout) {
-        wait = new WebDriverWait(driver, timeout);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 }

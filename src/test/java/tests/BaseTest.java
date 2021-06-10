@@ -3,30 +3,36 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import pages.CartPage;
-import pages.LoginPage;
-import pages.ProductsPage;
+import steps.CartSteps;
+import steps.LoginSteps;
+import steps.ProductSteps;
 
 @Listeners(TestListener.class)
 public class BaseTest {
     WebDriver driver;
-    ProductsPage productsPage;
-    CartPage cartPage;
-    LoginPage loginPage;
+    ProductSteps productSteps;
+    CartSteps cartSteps;
+    LoginSteps loginSteps;
 
     /**
      * Init test.
-     * This method performed before the test method
+     * * This method performed before the test method
+     *
+     * @param context the context
      */
     @BeforeMethod
-    public void InitTest() {
+    public void InitTest(ITestContext context) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        initPages();
+        initSteps();
+        String variable = "driver";
+        System.out.println("Setting driver into context with variable name " + variable);
+        context.setAttribute(variable, driver);
     }
 
     /**
@@ -39,11 +45,11 @@ public class BaseTest {
     }
 
     /**
-     * Init pages.
+     * Init steps.
      */
-    public void initPages() {
-        productsPage = new ProductsPage(driver);
-        cartPage = new CartPage(driver);
-        loginPage = new LoginPage(driver);
+    public void initSteps() {
+        productSteps = new ProductSteps(driver);
+        cartSteps = new CartSteps(driver);
+        loginSteps = new LoginSteps(driver);
     }
 }

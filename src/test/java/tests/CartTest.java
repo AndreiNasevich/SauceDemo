@@ -12,12 +12,9 @@ public class CartTest extends BaseTest implements ITestConstants {
      */
     @Test(retryAnalyzer = Retry.class)
     public void checkProductsPriceInCartTest() {
-        loginPage
-                .openPage()
-                .login(System.getProperty("userName"), System.getProperty("password"))
-                .addProductToCart(SAUCE_LABS_BACKPACK_PRODUCT);
-        cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK_PRODUCT), productsPage.getProductPrice(SAUCE_LABS_BACKPACK_PRODUCT));
+        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        cartSteps.openCartPage();
+        Assert.assertEquals(cartSteps.getPrice(SAUCE_LABS_BACKPACK_PRODUCT), productSteps.getPrice(SAUCE_LABS_BACKPACK_PRODUCT));
     }
 
     /**
@@ -26,12 +23,9 @@ public class CartTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void checkQuantityFieldTest() {
-        loginPage
-                .openPage()
-                .login(STANDARD_USER_LOGIN, STANDARD_PASSWORD)
-                .addProductToCart(SAUCE_LABS_BACKPACK_PRODUCT);
-        cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductQuantity(SAUCE_LABS_BACKPACK_PRODUCT), "1");
+        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        cartSteps.openCartPage();
+        Assert.assertEquals(cartSteps.getQuantity(SAUCE_LABS_BACKPACK_PRODUCT), "1");
     }
 
     /**
@@ -40,11 +34,8 @@ public class CartTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void checkRemoveButtonIsDisplayedTest() {
-        loginPage
-                .openPage()
-                .login(STANDARD_USER_LOGIN, STANDARD_PASSWORD)
-                .addProductToCart(SAUCE_LABS_BACKPACK_PRODUCT);
-        cartPage.openPage();
-        Assert.assertTrue(cartPage.isRemoveButtonDisplayed(SAUCE_LABS_BACKPACK_PRODUCT));
+        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        cartSteps.openCartPage();
+        Assert.assertTrue(cartSteps.isRemoveButtonDisplayed(SAUCE_LABS_BACKPACK_PRODUCT));
     }
 }

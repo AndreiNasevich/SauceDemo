@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,7 @@ public class LoginPage extends BasePage {
      *
      * @return the login page
      */
+    @Step("Open Login page")
     public LoginPage openPage() {
         super.openPage(SAUCE_DEMO_BASE_URL);
         return this;
@@ -39,6 +41,7 @@ public class LoginPage extends BasePage {
      * @param password the password
      * @return the products page
      */
+    @Step("Fill in {username} and {password} in login fields and click login button")
     public ProductsPage login(String username, String password) {
         waitForElementLocated(usernameInput, 10);
         usernameInput.sendKeys(username);
@@ -52,6 +55,7 @@ public class LoginPage extends BasePage {
      *
      * @return the error message
      */
+    @Step("Get error message text")
     public String getErrorMessage() {
         waitForElementLocated(errorMessage, 10);
         return errorMessage.getText();
