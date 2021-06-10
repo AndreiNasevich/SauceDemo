@@ -55,7 +55,7 @@ public class LoginPage extends BasePage {
      *
      * @return the error message
      */
-    @Step("Get error message")
+    @Step("Get error message text")
     public String getErrorMessage() {
         waitForElementLocated(errorMessage, 10);
         return errorMessage.getText();

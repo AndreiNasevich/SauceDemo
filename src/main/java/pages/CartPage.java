@@ -57,7 +57,6 @@ public class CartPage extends HeaderPage {
      * @return the boolean
      */
     public boolean isRemoveButtonDisplayed(String productName) {
-
         return driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).isDisplayed();
     }
 }

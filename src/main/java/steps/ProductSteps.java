@@ -57,7 +57,7 @@ public class ProductSteps {
      * @param productName the product name
      * @return the price
      */
-    @Step("Get product price at products page")
+    @Step("Get price for product: {productName} at products page")
     public String getPrice(String productName) {
         return productsPage.getProductPrice(productName);
     }
@@ -68,7 +68,7 @@ public class ProductSteps {
      * @param productName the product name
      * @return the button text
      */
-    @Step("Get button name")
+    @Step("Get button name for product: {productName}")
     public String getButtonText(String productName) {
         return productsPage.getAddAndRemoveProductToCartButtonText(productName);
     }

@@ -29,7 +29,7 @@ public class CartSteps {
      * @param productName the product name
      * @return the price
      */
-    @Step("Get product price at cart page")
+    @Step("Get price for product: {productName} at cart page")
     public String getPrice(String productName) {
         return cartPage.getProductPrice(productName);
     }
@@ -40,7 +40,7 @@ public class CartSteps {
      * @param productName the product name
      * @return the quantity
      */
-    @Step("Get product quantity")
+    @Step("Get quantity for product: {productName}")
     public String getQuantity(String productName) {
         return cartPage.getProductQuantity(productName);
     }
