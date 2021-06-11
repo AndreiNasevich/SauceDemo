@@ -3,6 +3,7 @@ package tests;
 import constants.ITestConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 public class CartTest extends BaseTest implements ITestConstants {
 
@@ -12,7 +13,8 @@ public class CartTest extends BaseTest implements ITestConstants {
      */
     @Test(retryAnalyzer = Retry.class)
     public void checkProductsPriceInCartTest() {
-        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);
         cartSteps.openCartPage();
         Assert.assertEquals(cartSteps.getPrice(SAUCE_LABS_BACKPACK_PRODUCT), productSteps.getPrice(SAUCE_LABS_BACKPACK_PRODUCT));
     }
@@ -23,7 +25,8 @@ public class CartTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void checkQuantityFieldTest() {
-        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);
         cartSteps.openCartPage();
         Assert.assertEquals(cartSteps.getQuantity(SAUCE_LABS_BACKPACK_PRODUCT), "1");
     }
@@ -34,7 +37,8 @@ public class CartTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void checkRemoveButtonIsDisplayedTest() {
-        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);
         cartSteps.openCartPage();
         Assert.assertTrue(cartSteps.isRemoveButtonDisplayed(SAUCE_LABS_BACKPACK_PRODUCT));
     }

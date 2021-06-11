@@ -3,6 +3,7 @@ package tests;
 import constants.ITestConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 public class ProductsTest extends BaseTest implements ITestConstants {
 
@@ -12,7 +13,8 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void removeButtonIsDisplayedTest() {
-        productSteps.loginAndAddProductToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD, SAUCE_LABS_BACKPACK_PRODUCT);
+        productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);
         Assert.assertEquals(productSteps.getButtonText(SAUCE_LABS_BACKPACK_PRODUCT), EXPECTED_REMOVE_BUTTON_NAME);
     }
 
@@ -22,7 +24,8 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void cartButtonIsDisplayedTest() {
-        loginSteps.login(STANDARD_USER_LOGIN, STANDARD_PASSWORD);
+        loginSteps.login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         Assert.assertTrue(productSteps.isCartButtonDisplayed());
     }
 
@@ -32,7 +35,8 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void amountOfProductsInCartIsDisplayedOnCartSignTest() {
-        productSteps.loginAndAddTwoProductsToCart(STANDARD_USER_LOGIN, STANDARD_PASSWORD,SAUCE_LABS_BACKPACK_PRODUCT, SAUCE_LABS_BOLT_T_SHIRT);
+        productSteps.loginAndAddTwoProductsToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT, SAUCE_LABS_BOLT_T_SHIRT);
         Assert.assertEquals(productSteps.getAmountOfProductsInCart(), "2");
     }
 }
