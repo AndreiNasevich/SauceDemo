@@ -9,20 +9,20 @@ pipeline {
         cron('0 8 * * *')
     }
     parameters {
-       // gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
    stages {
       stage('Testing') {
          steps {
             // Get some code from a GitHub repository
-            git branch: "${params.BRANCH}", url: 'https://github.com/Alisa1106/SauceDemo.git'
+           // git branch: "${params.BRANCH}", url: 'https://github.com/Alisa1106/SauceDemo.git'
 
             // Run Maven on a Unix agent.
             //sh "mvn clean test"
 
             // To run Maven on a Windows agent, use
-            bat "mvn clean test -Dtest=LoginTest"
+            bat "mvn clean test"
          }
 
          post {
