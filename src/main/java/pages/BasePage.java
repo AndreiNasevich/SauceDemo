@@ -35,7 +35,7 @@ abstract class BasePage implements IUrlConstants {
      * @param timeout the timeout
      */
     public void waitForElementLocated(By element, int timeout) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
@@ -46,7 +46,7 @@ abstract class BasePage implements IUrlConstants {
      * @param timeout the timeout
      */
     public void waitForElementLocated(WebElement element, int timeout) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 }
