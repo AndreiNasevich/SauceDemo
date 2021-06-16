@@ -11,14 +11,19 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <selenium-java.version> 3.141.59</selenium-java.version>
-        <testng.version>7.0.0</testng.version>
+        <selenium-chrome-driver.version>3.141.59</selenium-chrome-driver.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
-        <allure-testng.version>2.7.0</allure-testng.version>
-        <aspectjweaver.version>1.9.1</aspectjweaver.version>
-        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+        <selenium-api.version>3.141.59</selenium-api.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
+        <testng.version>7.0.0</testng.version>
+        <testng.version>7.0.0</testng.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <aspectjweaver.version>1.9.6</aspectjweaver.version>
         <allure-maven.version>2.10.0</allure-maven.version>
+        <allure-testng.version>2.7.0</allure-testng.version>
+        <aspectjweaver.version>1.9.6</aspectjweaver.version>
     </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -26,12 +31,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-<!--                    <forkCount>2</forkCount>-->
-<!--                    <reuseForks>true</reuseForks>-->
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar -Xmx256m
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar -Xmx256m
                     </argLine>
-                    <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -49,6 +51,12 @@
         </plugins>
     </build>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -61,12 +69,6 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
