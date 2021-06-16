@@ -28,7 +28,7 @@ public class BaseTest {
     public void InitTest(ITestContext context) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
         initSteps();
         String variable = "driver";
         System.out.println("Setting driver into context with variable name " + variable);
