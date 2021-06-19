@@ -11,7 +11,7 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      * Remove button is displayed test.
      * Check that when add product to cart remove button for this product is displayed
      */
-    @Test
+    @Test(description = "Check that when add product to cart remove button for this product is displayed")
     public void removeButtonIsDisplayedTest() {
         productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);
@@ -22,7 +22,7 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      * Cart button is displayed test.
      * Check that cart button is displayed on products page
      */
-    @Test
+    @Test(description = "Check that cart button is displayed on products page")
     public void cartButtonIsDisplayedTest() {
         loginSteps.login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
@@ -33,7 +33,7 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      * Amount of products in cart is displayed on cart sign test.
      * Check that when add product to cart amount of products in cart is displayed on cart sign on products page
      */
-    @Test
+    @Test(description = "Check that when add product to cart amount of products in cart is displayed on cart sign on products page")
     public void amountOfProductsInCartIsDisplayedOnCartSignTest() {
         productSteps.loginAndAddTwoProductsToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT, SAUCE_LABS_BOLT_T_SHIRT);

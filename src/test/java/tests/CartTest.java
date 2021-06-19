@@ -9,9 +9,9 @@ public class CartTest extends BaseTest implements ITestConstants {
 
     /**
      * Check products price in cart test.
-     * This method checks that the price of the product in the cart and on the products page matches
+     * This method check that the price of the product in the cart and on the products page matches
      */
-    @Test(retryAnalyzer = Retry.class)
+    @Test(retryAnalyzer = Retry.class, description = "Check that the price of the product in the cart and on the products page matches")
     public void checkProductsPriceInCartTest() {
         productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);
@@ -21,9 +21,9 @@ public class CartTest extends BaseTest implements ITestConstants {
 
     /**
      * Check quantity field test.
-     * This method checks quantity added product in the cart
+     * This method check quantity added product in the cart
      */
-    @Test
+    @Test(description = "Check quantity added product in the cart")
     public void checkQuantityFieldTest() {
         productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);
@@ -33,9 +33,9 @@ public class CartTest extends BaseTest implements ITestConstants {
 
     /**
      * Check remove button is displayed.
-     * This method checks when add product to cart remove button is displayed in cart
+     * This method check when add product to cart remove button is displayed in cart
      */
-    @Test
+    @Test(description = "Check when add product to cart remove button is displayed in cart")
     public void checkRemoveButtonIsDisplayedTest() {
         productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);

@@ -1,6 +1,7 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
@@ -11,6 +12,7 @@ import steps.CartSteps;
 import steps.LoginSteps;
 import steps.ProductSteps;
 
+@Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
     WebDriver driver;
@@ -31,7 +33,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         initSteps();
         String variable = "driver";
-        System.out.println("Setting driver into context with variable name " + variable);
+        log.debug("Setting driver into context with variable name " + variable);
         context.setAttribute(variable, driver);
     }
 
@@ -41,6 +43,7 @@ public class BaseTest {
      */
     @AfterMethod(alwaysRun = true)
     public void endTest() {
+        log.debug("Close browser");
         driver.quit();
     }
 
