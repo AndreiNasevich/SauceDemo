@@ -49,7 +49,7 @@ public class LoginPage extends BasePage {
         waitForElementLocated(usernameInput, 10);
         log.info(String.format("Fill in username: '%s' in Login field.", username));
         usernameInput.sendKeys(username);
-        log.info(String.format("Fill in password: '%s' in Login field.", password));
+        log.info(String.format("Fill in password: '%s' in Password field.", password));
         passwordInput.sendKeys(password);
         log.info("Click Login button.");
         loginButton.click();
@@ -64,7 +64,8 @@ public class LoginPage extends BasePage {
     @Step("Get error message text")
     public String getErrorMessage() {
         waitForElementLocated(errorMessage, 10);
-        log.info("Get error message.");
-        return errorMessage.getText();
+        String errorMessageText = errorMessage.getText();
+        log.info(String.format("Get error message text. Text is: %s.", errorMessageText));
+        return errorMessageText;
     }
 }

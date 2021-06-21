@@ -50,8 +50,9 @@ public class ProductsPage extends HeaderPage {
      * @return the add and remove product to cart button text
      */
     public String getAddAndRemoveProductToCartButtonText(String productName) {
-        log.info(String.format("Get button name for product: %s.", productName));
-        return driver.findElement(By.xpath(String.format(ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON, productName))).getText();
+        String buttonName = driver.findElement(By.xpath(String.format(ADD_AND_REMOVE_PRODUCT_TO_CART_BUTTON, productName))).getText();
+        log.info(String.format("Get button name for product: %s. Button name is: %s.", productName, buttonName));
+        return buttonName;
     }
 
     /**
@@ -63,7 +64,8 @@ public class ProductsPage extends HeaderPage {
     public String getProductPrice(String productName) {
         String productPriceElement = String.format(PRODUCT_PRICE, productName);
         waitForElementLocated(By.xpath(productPriceElement), 10);
-        log.info(String.format("Get price for product: %s.", productName));
-        return driver.findElement(By.xpath(productPriceElement)).getText();
+        String productPrice = driver.findElement(By.xpath(productPriceElement)).getText();
+        log.info(String.format("Get price for product: %s. Price is: %s.", productName, productPrice));
+        return productPrice;
     }
 }

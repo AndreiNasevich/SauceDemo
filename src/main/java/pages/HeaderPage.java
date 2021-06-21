@@ -35,7 +35,8 @@ public class HeaderPage extends BasePage {
      * @return the amount of products in cart text
      */
     public String getAmountOfProductsInCartText() {
-        log.info("Get amount of products in cart.");
-        return amountOfProductsInCartOnCartSign.getText();
+        String amountOfProductsInCart = amountOfProductsInCartOnCartSign.getText();
+        log.info(String.format("Get amount of products in cart. Amount is: %s.", amountOfProductsInCart));
+        return amountOfProductsInCart;
     }
 }
