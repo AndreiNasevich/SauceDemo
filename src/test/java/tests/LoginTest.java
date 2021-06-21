@@ -14,7 +14,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
      * Login with empty name field test.
      * Check that when login with empty username field error message is displayed
      */
-    @Test
+    @Test(description = "Check that when login with empty username field error message is displayed")
     public void loginWithEmptyNameFieldTest() {
         Assert.assertEquals(loginSteps.loginWithErrorMessage(EMPTY_STRING, System.getenv().getOrDefault("password",
                 PropertyReader.getProperty("password"))), EMPTY_USERNAME_ERROR_MESSAGE);
@@ -24,7 +24,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
      * Login with empty password field test.
      * Check that when login with empty password field error message is displayed
      */
-    @Test
+    @Test(description = "Check that when login with empty password field error message is displayed")
     public void loginWithEmptyPasswordFieldTest() {
         Assert.assertEquals(loginSteps.loginWithErrorMessage(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                 EMPTY_STRING), EMPTY_PASSWORD_ERROR_MESSAGE);
@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
      * Login with empty login and password fields test.
      * Check that when login with empty username and password fields error message is displayed
      */
-    @Test
+    @Test(description = "Check that when login with empty username and password fields error message is displayed")
     public void loginWithEmptyLoginAndPasswordFieldsTest() {
         Assert.assertEquals(loginSteps.loginWithErrorMessage(EMPTY_STRING, EMPTY_STRING), EMPTY_USERNAME_ERROR_MESSAGE);
     }

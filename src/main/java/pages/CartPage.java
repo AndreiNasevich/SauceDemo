@@ -1,9 +1,11 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class CartPage extends HeaderPage {
 
     public CartPage(WebDriver driver) {
@@ -22,6 +24,7 @@ public class CartPage extends HeaderPage {
      */
     @Step("Open Cart page")
     public CartPage openPage() {
+        log.info("Open Cart page URL " + SAUCE_DEMO_CART_PAGE_URL);
         super.openPage(SAUCE_DEMO_CART_PAGE_URL);
         return this;
     }
@@ -35,7 +38,9 @@ public class CartPage extends HeaderPage {
     public String getProductPrice(String productName) {
         String productPriceElement = String.format(PRODUCT_PRICE, productName);
         waitForElementLocated((By.xpath(productPriceElement)), 10);
-        return driver.findElement(By.xpath(productPriceElement)).getText();
+        String productPrice = driver.findElement(By.xpath(productPriceElement)).getText();
+        log.info(String.format("Get price for product: %s. Price is: %s.", productName, productPrice));
+        return productPrice;
     }
 
     /**
@@ -47,7 +52,9 @@ public class CartPage extends HeaderPage {
     public String getProductQuantity(String productName) {
         String productQuantityElement = String.format(PRODUCT_QUANTITY, productName);
         waitForElementLocated(By.xpath(productQuantityElement), 10);
-        return driver.findElement(By.xpath(productQuantityElement)).getText();
+        String productQuantity = driver.findElement(By.xpath(productQuantityElement)).getText();
+        log.info(String.format("Get quantity for product: %s. Quantity is: %s.", productName, productQuantity));
+        return productQuantity;
     }
 
     /**
@@ -57,6 +64,7 @@ public class CartPage extends HeaderPage {
      * @return the boolean
      */
     public boolean isRemoveButtonDisplayed(String productName) {
+        log.info(String.format("Check remove button is displayed for product: %s.", productName));
         return driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).isDisplayed();
     }
 }
