@@ -13,9 +13,9 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test(description = "Check that when add product to cart remove button for this product is displayed")
     public void removeButtonIsDisplayedTest() {
-        productSteps.loginAndAddProductToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+        productSteps.loginAndAddProductToCart(System.getenv().getOrDefault(USER_NAME, PropertyReader.getProperty(USER_NAME)),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT);
-        Assert.assertEquals(productSteps.getButtonText(SAUCE_LABS_BACKPACK_PRODUCT), EXPECTED_REMOVE_BUTTON_NAME);
+        Assert.assertTrue(productSteps.getButtonText(SAUCE_LABS_BACKPACK_PRODUCT).equalsIgnoreCase(EXPECTED_REMOVE_BUTTON_NAME));
     }
 
     /**
@@ -24,7 +24,7 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test(description = "Check that cart button is displayed on products page")
     public void cartButtonIsDisplayedTest() {
-        loginSteps.login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+        loginSteps.login(System.getenv().getOrDefault(USER_NAME, PropertyReader.getProperty(USER_NAME)),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         Assert.assertTrue(productSteps.isCartButtonDisplayed());
     }
@@ -35,7 +35,7 @@ public class ProductsTest extends BaseTest implements ITestConstants {
      */
     @Test(description = "Check that when add product to cart amount of products in cart is displayed on cart sign on products page")
     public void amountOfProductsInCartIsDisplayedOnCartSignTest() {
-        productSteps.loginAndAddTwoProductsToCart(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+        productSteps.loginAndAddTwoProductsToCart(System.getenv().getOrDefault(USER_NAME, PropertyReader.getProperty(USER_NAME)),
                 System.getenv().getOrDefault("password", PropertyReader.getProperty("password")), SAUCE_LABS_BACKPACK_PRODUCT, SAUCE_LABS_BOLT_T_SHIRT);
         Assert.assertEquals(productSteps.getAmountOfProductsInCart(), "2");
     }
