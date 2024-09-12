@@ -16,8 +16,8 @@ public class LoginTest extends BaseTest implements ITestConstants {
      */
     @Test(description = "Check that when login with empty username field error message is displayed")
     public void loginWithEmptyNameFieldTest() {
-        Assert.assertEquals(loginSteps.loginWithErrorMessage(EMPTY_STRING, System.getenv().getOrDefault("password",
-                PropertyReader.getProperty("password"))), EMPTY_USERNAME_ERROR_MESSAGE);
+        Assert.assertEquals(loginSteps.loginWithErrorMessage(EMPTY_STRING, System.getenv().getOrDefault(PASSWORD,
+                PropertyReader.getProperty(PASSWORD))), EMPTY_USERNAME_ERROR_MESSAGE);
     }
 
     /**
